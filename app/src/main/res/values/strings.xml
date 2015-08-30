@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RomamNumbers</string>
+
+    <string name="lb_roman">Roman number:</string>
+    <string name="lb_result">Result:</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="h_egroman">e.g. MCMXIV</string>
+    <string name="tbtn_consult">CONSULT</string>
+    <string name="tbtn_clean">CLEAN</string>
+
+</resources>
