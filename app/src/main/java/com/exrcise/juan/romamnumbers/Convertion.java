@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class Convertion {
 
-    public static final HashMap<String,Integer> MapRomanNumbers = new HashMap<String,Integer>()
+    private static final HashMap<String,Integer> MapRomanNumbers = new HashMap<String,Integer>()
     {{
             put("M",1000);
             put("C",100);
@@ -31,15 +31,15 @@ public class Convertion {
         int result = 0;
         String comparison1_2;
         String comparison2_3;
-        int i=0;
+        int i_cont =0; //Counter
 
-        while(i < NumberToCalculate.length())
+        while(i_cont < NumberToCalculate.length())
         {
-            first = MapRomanNumbers.get(String.valueOf(TextArray[i]));
+            first = MapRomanNumbers.get(String.valueOf(TextArray[i_cont]));
 
             try
             {
-                second = MapRomanNumbers.get(String.valueOf(TextArray[i+1]));
+                second = MapRomanNumbers.get(String.valueOf(TextArray[i_cont +1]));
             }
             catch (IndexOutOfBoundsException e) {
                 //No more index in the array
@@ -47,16 +47,16 @@ public class Convertion {
                 return result;
             }
 
-            comparison1_2 = String.valueOf(TextArray[i])+String.valueOf(TextArray[i+1]);
+            comparison1_2 = String.valueOf(TextArray[i_cont])+String.valueOf(TextArray[i_cont +1]);
 
             try
             {
-                third = MapRomanNumbers.get(String.valueOf(TextArray[i+2]));
-                comparison2_3 = String.valueOf(TextArray[i+1])+String.valueOf(TextArray[i+2]);
+                third = MapRomanNumbers.get(String.valueOf(TextArray[i_cont +2]));
+                comparison2_3 = String.valueOf(TextArray[i_cont +1])+String.valueOf(TextArray[i_cont +2]);
             }
             catch (IndexOutOfBoundsException e) {
                 third = 0;//No more index in the array
-                comparison2_3 = String.valueOf(TextArray[i+1]);
+                comparison2_3 = String.valueOf(TextArray[i_cont +1]);
             }
 
 
@@ -64,20 +64,20 @@ public class Convertion {
             if(comparison1_2.matches("^CM|CD|XC|XL|IX|IV$"))
             {
                 result += second - first;
-                i+= 1; //play with two numbers
+                i_cont += 1; //play with two numbers
             }
             else //if second is minor than third is minus else plus
                 if (comparison2_3.matches("^CM|CD|XC|XL|IX|IV$"))
                 {
                     result += first + third - second;
-                    i+= 2; //play with three numbers
+                    i_cont += 2; //play with three numbers
                 }
                 else
                 {
                     result += first + second;
-                    i+= 1; //play with two numbers
+                    i_cont += 1; //play with two numbers
                 }
-            i+= 1;
+            i_cont += 1;
         }
         return result;
     }
