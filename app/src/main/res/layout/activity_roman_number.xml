@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/tbtn_clean"
         android:id="@+id/btn_clean"
+        android:onClick="Clean"
         android:textSize="26sp"
         android:layout_alignTop="@+id/btn_consult"
         android:layout_alignRight="@+id/et_romannumber"
@@ -51,7 +52,7 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="34sp"
-        android:text="xxxx" />
+        android:text="" />
 
     <TextView
         android:layout_width="wrap_content"

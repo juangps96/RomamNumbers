@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.content.Context;
 
 // Juan Peñaherrera
 public class RomanNumber extends AppCompatActivity {
@@ -14,11 +15,16 @@ public class RomanNumber extends AppCompatActivity {
     TextView tv_variable;
     EditText et_entry;
 
+    //objects of the class
+    Validation objValidation = new Validation();
+    Convertion objConvertion = new Convertion();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roman_number);
 
+        //Assign elements to the vars
         tv_variable = (TextView)findViewById(R.id.tv_result);
         et_entry =(EditText)findViewById(R.id.et_romannumber);
 
@@ -46,10 +52,35 @@ public class RomanNumber extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /*
+     Convert the Roman number text to a number
+     */
     public void Calculation(View v){
 
-        tv_variable.setText(et_entry.getText());
+        //UpperCase
+        et_entry.setText(et_entry.getText().toString().toUpperCase());
+
+        //If Empty
+        if (et_entry.getText().toString().isEmpty())
+        {
+            et_entry.setError(getString(R.string.msj_empty));
+            return;
+        }
+
+        //call convertion
+        if (objValidation.Validator(et_entry.getText().toString()))
+            tv_variable.setText(String.valueOf(objConvertion.Calculation(et_entry.getText().toString())));
+        else
+            tv_variable.setText(getString(R.string.msj_wrong));
+
+    }
+
+    /*
+    * Clean the edittextboxes
+    * */
+    public void Clean(View v){
+        tv_variable.setText("");
+        et_entry.setText("");
     }
 
 

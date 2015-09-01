@@ -8,5 +8,8 @@
     <string name="h_egroman">e.g. MCMXIV</string>
     <string name="tbtn_consult">CONSULT</string>
     <string name="tbtn_clean">CLEAN</string>
+    <string name="msj_wrong">Wrong Entry</string>
+    <string name="msj_empty">Roman number missing</string>
 
 </resources>
+
